@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                          // 目标 ECMAScript 版本
+    "module": "ESNext",                       // 模块系统
+    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost"], // 使用的库
+    "strict": true,                           // 启用所有严格类型检查选项
+    "esModuleInterop": true,                  // 允许默认导入非 ES 模块
+    "skipLibCheck": true,                     // 跳过库文件的类型检查
+    "forceConsistentCasingInFileNames": true, // 强制文件名一致的大小写
+    "moduleResolution": "node",               // 模块解析策略
+    "sourceMap": true,                        // 生成 source map 文件
+    "noImplicitAny": true,                    // 禁止隐式的 any 类型
+    "noImplicitReturns": true,                // 检查函数是否有未返回值的代码路径
+    "noFallthroughCasesInSwitch": true,       // 检查 switch 语句中的 fallthrough
+    "resolveJsonModule": true,                // 允许导入 JSON 模块
+    "typeRoots": ["./node_modules/@types"],   // 类型声明文件的根目录
+    "baseUrl": ".",                           // 基础目录
+    "paths": {                                // 路径映射
+      "@src/*": ["src/*"]
+    }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "exclude": [
+    "node_modules",                           // 排除的文件
+    "**/*.spec.ts"                            // 排除的测试文件
+  ]
+}
