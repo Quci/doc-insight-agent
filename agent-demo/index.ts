@@ -19,8 +19,8 @@ dotenv.config({
 })
 
 const clientOptions = {
-	baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
-		apiKey: process.env.DASHSCOPE_API_KEY,
+	// baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
+		apiKey: process.env.OPENAI_API_KEY,
 }
 
 const main = async() => {
@@ -30,13 +30,13 @@ const main = async() => {
 	// return
 
 	const llm = new ChatOpenAI({
-		model: "deepseek-r1-distill-llama-70b",
+		model: "gpt-4o-mini-2024-07-18",
 		temperature: 0,
 		configuration: clientOptions
 	});
 
 	const embeddings = new OpenAIEmbeddings({
-		model: "text-embedding-v3",
+		model: "text-embedding-3-large",
 		configuration: clientOptions
 	});
 
