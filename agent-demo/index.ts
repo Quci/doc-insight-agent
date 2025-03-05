@@ -1,6 +1,5 @@
 import dotenv from "dotenv";
 import * as path from "node:path";
-import { OpenAI } from "openai";
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { MemoryVectorStore } from 'langchain/vectorstores/memory'
 import "cheerio";
@@ -19,18 +18,12 @@ dotenv.config({
 })
 
 const clientOptions = {
-	// baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
-		apiKey: process.env.OPENAI_API_KEY,
+	apiKey: process.env.OPENAI_API_KEY,
 }
 
 const main = async() => {
-
-	// console.log('process.env.DASHSCOPE_API_KEY', process.env.DASHSCOPE_API_KEY)
-	//
-	// return
-
 	const llm = new ChatOpenAI({
-		model: "gpt-4o-mini-2024-07-18",
+		model: "gpt-4o",
 		temperature: 0,
 		configuration: clientOptions
 	});
@@ -42,8 +35,6 @@ const main = async() => {
 
 	const vectorStore = new MemoryVectorStore(embeddings);
 
-
-	// Load and chunk contents of blog
 	const pTagSelector = "p";
 	const cheerioLoader = new CheerioWebBaseLoader(
 		// "https://github.com/features/security/",
@@ -105,25 +96,3 @@ const main = async() => {
 }
 
 main()
-
-// const openai = new OpenAI(
-// 	{
-// 		// 若没有配置环境变量，请用百炼API Key将下行替换为：apiKey: "sk-xxx"
-// 		apiKey: process.env.DASHSCOPE_API_KEY,
-// 		baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1"
-// 	}
-// );
-//
-// (async () => {
-// 	const completion = await openai.chat.completions.create({
-// 		model: "deepseek-r1-distill-llama-70b",
-// 		messages: [
-// 			{ role: "system", content: "You are a helpful assistant." },
-// 			{ role: "user", content: "9.9和9.11谁大" }
-// 		],
-// 	});
-// 	console.log(completion.choices[0].message.content)
-// })()
-
-
-
